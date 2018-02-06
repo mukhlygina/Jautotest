@@ -10,7 +10,7 @@ import site.JDISite;
 
 import static site.JDISite.*;
 
-public class SimleTest extends TestNGBase {
+public class SimpleTest extends TestNGBase {
 
     @BeforeSuite
     public void setUp() {
@@ -23,5 +23,6 @@ public class SimleTest extends TestNGBase {
         login();
         headerMenu.clickOn(MenuEnum.METALS_COLORS.title);
         metalsColorsPage.elementsForm.submit(new MetalsAndColors());
+        metalsColorsPage.resultsForm.checkForm(new MetalsAndColors());
     }
 }
