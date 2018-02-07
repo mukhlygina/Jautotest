@@ -14,6 +14,7 @@ public class ResultsForm extends Form {
 
     public void checkResults(String name, String condition) {
         String regex = String.format("%s: %s", name, condition);
+        // TODO check all data at once or using soft asserts
         assertTrue(results.stream().anyMatch(row -> row.getText().matches(regex)), String.format("Wrong %s", name));
     }
 

@@ -1,5 +1,9 @@
 package entities;
 
+// TODO lombok required
+// TODO default fields values is nor really good approach, make a constant
+// TODO For multiple values use collections
+// TODO Specified data types carefully, "3" should no be a String
 public class MetalsAndColors {
     public String element = "Water, Fire";
     public String odd = "3";

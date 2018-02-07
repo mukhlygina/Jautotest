@@ -8,5 +8,7 @@ import site.sections.ResultsForm;
 @JPage(url = "page2.htm")
 public class MetalsColorsPage extends WebPage {
     public ElementsForm elementsForm;
+
+    // TODO thi is NOT a form, i guess
     public ResultsForm resultsForm;
 }
