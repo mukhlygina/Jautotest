@@ -4,7 +4,6 @@ import com.epam.jdi.uitests.web.selenium.elements.common.Label;
 import com.epam.jdi.uitests.web.selenium.elements.pageobjects.annotations.JPage;
 import com.epam.jdi.uitests.web.selenium.elements.pageobjects.annotations.JSite;
 import entities.User;
-import enums.MenuEnum;
 import org.openqa.selenium.support.FindBy;
 import site.pages.IndexPage;
 import site.pages.MetalsColorsPage;
@@ -24,11 +23,11 @@ public class JDISite {
     @FindBy(css = ".profile-photo")
     public static Label profilePhoto;
 
-    @FindBy(css ="ul.m-l8 li")
-    public static HeaderMenu<MenuEnum> headerMenu;
+    @FindBy(css = "ul.m-l8 li")
+    public static HeaderMenu headerMenu;
 
-    public static void login() {
+    public static void login(User user) {
         profilePhoto.click();
-        loginForm.loginAs(new User());
+        loginForm.loginAs(user);
     }
 }
