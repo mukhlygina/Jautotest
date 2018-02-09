@@ -3,6 +3,7 @@ package ex7;
 import com.epam.jdi.uitests.web.selenium.elements.composite.WebSite;
 import com.epam.jdi.uitests.web.testng.testRunner.TestNGBase;
 import entities.MetalsAndColors;
+import entities.User;
 import enums.MenuEnum;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
@@ -20,15 +21,14 @@ public class SimpleTest extends TestNGBase {
     @Test
     public void loginTest() {
         indexPage.open();
-
-        // TODO Common Wrapper error, you can find it out in Skype
-        login();
-
-        // TODO that's wont work in case if you try to open sub-menu (Dates, for example)
-        headerMenu.clickOn(MenuEnum.METALS_COLORS.title);
-
-
-        metalsColorsPage.elementsForm.submit(new MetalsAndColors());
-        metalsColorsPage.resultsForm.checkForm(new MetalsAndColors());
+        login(new User());
+        // TODO data should be encapsulated in MetalsAndColors class
+        String[] elements = {"Water", "Fire"};
+        String[] salads = {"Cucumber", "Tomato"};
+        MetalsAndColors data = new MetalsAndColors(elements, 3, 8, "Selen", "Red", salads);
+        // TODO this will not work in case if you try to open sub-menu (Dates, for example)
+        headerMenu.clickOn(MenuEnum.METALS_COLORS);
+        metalsColorsPage.elementsForm.fillForm(data);
+        metalsColorsPage.resultsSection.checkResults(data);
     }
 }

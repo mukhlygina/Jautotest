@@ -32,14 +32,30 @@ public class ElementsForm extends Form<MetalsAndColors> {
     )
     public Dropdown metal;
 
-    @JDropdown(
-            root = @FindBy(css = ".salad"),
-            expand = @FindBy(css = ".caret"),
-            list = @FindBy(tagName = "li")
-    )
-    public Dropdown salad;
+    @FindBy(css = ".salad .caret")
+    public Button expandSaladList;
+
+    @FindBy(css = ".salad ul li")
+    public CheckList salad;
 
     @FindBy(css = "#submit-button")
     public Button submit;
+
+    // TODO this method fill and submit form
+    public void fillForm(MetalsAndColors metalsAndColors) {
+        element.check(metalsAndColors.element);
+        even.select(metalsAndColors.even.toString());
+        odd.select(metalsAndColors.odd.toString());
+        color.select(metalsAndColors.color);
+        metal.select(metalsAndColors.metal);
+
+        // TODO #1 you should create you own Element that can be used for checking elements without additional actions
+        expandSaladList.click();
+        // TODO #2 you should elaborate the method that uncheck all options
+        salad.check("Salad");
+        salad.check(metalsAndColors.salad);
+        // !TODO #1
+        submit.click();
+    }
 
 }
