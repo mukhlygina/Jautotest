@@ -8,7 +8,10 @@ import entities.MetalsAndColors;
 import entities.User;
 import enums.MenuEnum;
 import lombok.SneakyThrows;
-import org.testng.annotations.*;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 import site.JDISite;
 
 import java.io.File;
@@ -22,17 +25,18 @@ public class DataProviderTest extends TestNGBase {
         String filePath = getClass().getClassLoader().getResource("ex8_jdi_metalsColorsDataSet.json").getFile();
         File jfile = new File(filePath);
         ObjectMapper objectMapper = new ObjectMapper();
-        TypeReference<HashMap<String,MetalsAndColors>> typeRef = new TypeReference<HashMap<String,MetalsAndColors>>() {};
-        HashMap<String,MetalsAndColors> valuesFromJson = objectMapper.readValue(jfile, typeRef);
+        TypeReference<HashMap<String, MetalsAndColors>> typeRef = new TypeReference<HashMap<String, MetalsAndColors>>() {
+        };
+        HashMap<String, MetalsAndColors> valuesFromJson = objectMapper.readValue(jfile, typeRef);
 
         return convertMapToArray(valuesFromJson);
     }
 
-    public Object[][] convertMapToArray(Map<String, MetalsAndColors> map){
+    public Object[][] convertMapToArray(Map<String, MetalsAndColors> map) {
         Object[][] data = new Object[map.size()][];
         Object[] values = map.values().toArray();
-        for(int i = 0; i < values.length; i++) {
-            data[i] = new Object[] {values[i]};
+        for (int i = 0; i < values.length; i++) {
+            data[i] = new Object[]{values[i]};
         }
         return data;
     }
@@ -50,8 +54,8 @@ public class DataProviderTest extends TestNGBase {
 
     @Test(dataProvider = "dataProvider")
     public void MetalsColorsTest(MetalsAndColors metalsAndColors) {
-        JDISite.headerMenu.clickOn(MenuEnum.METALS_COLORS);
-        JDISite.metalsColorsPage.elementsForm.fillForm(metalsAndColors);
+        JDISite.headerMenu.selectMenu(MenuEnum.METALS_COLORS);
+        JDISite.metalsColorsPage.elementsForm.fillAndSubmitForm(metalsAndColors);
     }
 
 }

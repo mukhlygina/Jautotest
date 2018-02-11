@@ -41,7 +41,7 @@ public class ElementsForm extends Form<MetalsAndColors> {
     @FindBy(css = "#submit-button")
     public Button submit;
 
-    public void fillForm(MetalsAndColors metalsAndColors) {
+    public void fillAndSubmitForm(MetalsAndColors metalsAndColors) {
         element.check(metalsAndColors.elements);
         odd.select(metalsAndColors.summary[0].toString());
         even.select(metalsAndColors.summary[1].toString());

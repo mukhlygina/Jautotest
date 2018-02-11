@@ -1,18 +1,19 @@
 package enums;
 
+import lombok.NoArgsConstructor;
+
 import java.util.Objects;
 
+@NoArgsConstructor
 public enum MenuEnum {
     HOME,
     CONTACT_FORM,
-    SERVICE(2),
+    SERVICE,
+    DATES(2),
     METALS_COLORS("Metals & Colors");
 
     private String title;
     private int level;
-
-    MenuEnum() {
-    }
 
     MenuEnum(String title) {
         this.title = title;
