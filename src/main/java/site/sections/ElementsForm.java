@@ -42,14 +42,14 @@ public class ElementsForm extends Form<MetalsAndColors> {
     public Button submit;
 
     public void fillForm(MetalsAndColors metalsAndColors) {
-        element.check(metalsAndColors.element);
-        even.select(metalsAndColors.even.toString());
-        odd.select(metalsAndColors.odd.toString());
+        element.check(metalsAndColors.elements);
+        odd.select(metalsAndColors.summary[0].toString());
+        even.select(metalsAndColors.summary[1].toString());
         color.select(metalsAndColors.color);
-        metal.select(metalsAndColors.metal);
+        metal.select(metalsAndColors.metals);
         expandSaladList.click();
         salad.check("Salad");
-        salad.check(metalsAndColors.salad);
+        salad.check(metalsAndColors.vegetables);
         submit.click();
     }
 

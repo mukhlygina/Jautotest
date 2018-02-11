@@ -16,18 +16,18 @@ public class ResultsSection extends Form {
         String regexColor = String.format("%s: %s", "Color", metalsAndColors.color);
         softAssert.assertTrue(results.stream().anyMatch(row -> row.getText().matches(regexColor)), String.format("Wrong Color"));
 
-        Integer sum = metalsAndColors.even + metalsAndColors.odd;
+        Integer sum = metalsAndColors.summary[0] + metalsAndColors.summary[1];
         String regexSum = String.format("%s: %s", "Summary", sum);
         softAssert.assertTrue(results.stream().anyMatch(row -> row.getText().matches(regexSum)), String.format("Wrong Summary"));
 
-        String regexMetal = String.format("%s: %s", "Metal", metalsAndColors.metal);
+        String regexMetal = String.format("%s: %s", "Metal", metalsAndColors.metals);
         softAssert.assertTrue(results.stream().anyMatch(row -> row.getText().matches(regexMetal)), String.format("Wrong Metal"));
 
-        String elements = String.join(", ", metalsAndColors.element);
+        String elements = String.join(", ", metalsAndColors.elements);
         String regexElement = String.format("%s: %s", "Elements", elements);
         softAssert.assertTrue(results.stream().anyMatch(row -> row.getText().matches(regexElement)), String.format("Wrong Elements"));
 
-        String salads = String.join(", ", metalsAndColors.salad);
+        String salads = String.join(", ", metalsAndColors.vegetables);
         String regexSalad = String.format("%s: %s", "Vegetables", salads);
         softAssert.assertTrue(results.stream().anyMatch(row -> row.getText().matches(regexSalad)), String.format("Wrong Vegetables"));
         softAssert.assertAll();

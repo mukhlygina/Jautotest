@@ -24,7 +24,8 @@ public class SimpleTest extends TestNGBase {
         login(new User());
         String[] elements = {"Water", "Fire"};
         String[] salads = {"Cucumber", "Tomato"};
-        MetalsAndColors data = new MetalsAndColors(elements, 3, 8, "Selen", "Red", salads);
+        Integer[] sum = {3, 8};
+        MetalsAndColors data = new MetalsAndColors(sum, elements, "Red", "Selen", salads);
         headerMenu.clickOn(MenuEnum.METALS_COLORS);
         metalsColorsPage.elementsForm.fillForm(data);
         metalsColorsPage.resultsSection.checkResults(data);
