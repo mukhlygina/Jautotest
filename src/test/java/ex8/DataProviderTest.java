@@ -21,7 +21,8 @@ import java.util.Map;
 public class DataProviderTest extends TestNGBase {
     @SneakyThrows
     @DataProvider
-    public Object[][] dataProvider() {
+    // TODO is that really essential to provide Test method with two-dim array ?
+    public Object[] dataProvider() {
         String filePath = getClass().getClassLoader().getResource("ex8_jdi_metalsColorsDataSet.json").getFile();
         File jfile = new File(filePath);
         ObjectMapper objectMapper = new ObjectMapper();

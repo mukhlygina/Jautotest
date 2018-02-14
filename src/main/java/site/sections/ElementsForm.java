@@ -9,11 +9,19 @@ import com.epam.jdi.uitests.web.selenium.elements.pageobjects.annotations.object
 import com.epam.jdi.uitests.web.selenium.elements.pageobjects.annotations.objects.JDropdown;
 import entities.MetalsAndColors;
 import org.openqa.selenium.support.FindBy;
+import org.testng.util.Strings;
 import site.DropdownList;
 
 public class ElementsForm extends Form<MetalsAndColors> {
     @FindBy(css = "#elements-checklist label")
-    public CheckList element;
+    public CheckList element = new CheckList() {
+        @Override
+        protected void selectAction(String name) {
+            if (!Strings.isNullOrEmpty(name)) {
+                super.selectAction(name);
+            }
+        }
+    };
 
     @FindBy(css = "#even-selector p")
     public RadioButtons even;
@@ -46,25 +54,28 @@ public class ElementsForm extends Form<MetalsAndColors> {
 
     public void fillAndSubmitForm(MetalsAndColors metalsAndColors) {
         element.clear();
-        if(metalsAndColors.elements.length != 0) {
-            element.check(metalsAndColors.elements);
-        }
+//        if(metalsAndColors.elements.length != 0) {
+//            element.check(metalsAndColors.elements);
+//        }
+        // TODO take a look on 17 line
+        // TODO i guess that approach is a bit readable...
+        element.check(metalsAndColors.elements);
 
-        if(metalsAndColors.summary.length != 0) {
+        if (metalsAndColors.summary.length != 0) {
             odd.select(metalsAndColors.summary[0].toString());
             even.select(metalsAndColors.summary[1].toString());
         }
 
-        if(!metalsAndColors.color.isEmpty()) {
+        if (!metalsAndColors.color.isEmpty()) {
             color.select(metalsAndColors.color);
         }
 
-        if(!metalsAndColors.metals.isEmpty()) {
+        if (!metalsAndColors.metals.isEmpty()) {
             metal.select(metalsAndColors.metals);
         }
 
         salad.clear();
-        if(metalsAndColors.vegetables != null) {
+        if (metalsAndColors.vegetables != null) {
             salad.check(metalsAndColors.vegetables);
         }
 
