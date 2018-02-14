@@ -1,19 +1,19 @@
 package enums;
 
+import lombok.NoArgsConstructor;
+
 import java.util.Objects;
 
+@NoArgsConstructor
 public enum MenuEnum {
     HOME,
     CONTACT_FORM,
-    SERVICE(2), // <- TODO as far as i understand, SERVICE is the first level of the menu...
+    SERVICE,
+    DATES(2),
     METALS_COLORS("Metals & Colors");
 
     private String title;
     private int level;
-
-    // TODO lombok ?
-    MenuEnum() {
-    }
 
     MenuEnum(String title) {
         this.title = title;

@@ -1,17 +1,17 @@
 package entities;
 
+import com.fasterxml.jackson.annotation.JsonRootName;
 import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class MetalsAndColors {
-    public String[] element;
-    public Integer odd;
-    public Integer even;
-    public String metal;
+    public Integer[] summary;
+    public String[] elements;
     public String color;
-    public String[] salad;
-
-    // TODO lombok ?
-    public MetalsAndColors() {
-    }
+    public String metals;
+    public String[] vegetables;
 }

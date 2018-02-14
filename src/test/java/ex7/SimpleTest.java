@@ -22,13 +22,13 @@ public class SimpleTest extends TestNGBase {
     public void loginTest() {
         indexPage.open();
         login(new User());
-        // TODO data should be encapsulated in MetalsAndColors class
         String[] elements = {"Water", "Fire"};
         String[] salads = {"Cucumber", "Tomato"};
-        MetalsAndColors data = new MetalsAndColors(elements, 3, 8, "Selen", "Red", salads);
-        // TODO this will not work in case if you try to open sub-menu (Dates, for example)
-        headerMenu.clickOn(MenuEnum.METALS_COLORS);
-        metalsColorsPage.elementsForm.fillForm(data);
+        Integer[] sum = {3, 8};
+        MetalsAndColors data = new MetalsAndColors(sum, elements, "Red", "Selen", salads);
+        headerMenu.selectMenu(MenuEnum.DATES);
+        headerMenu.selectMenu(MenuEnum.METALS_COLORS);
+        metalsColorsPage.elementsForm.fillAndSubmitForm(data);
         metalsColorsPage.resultsSection.checkResults(data);
     }
 }
