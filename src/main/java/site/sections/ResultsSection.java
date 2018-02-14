@@ -14,22 +14,24 @@ public class ResultsSection extends Form {
     public void checkResults(MetalsAndColors metalsAndColors) {
         SoftAssert softAssert = new SoftAssert();
         String regexColor = String.format("%s: %s", "Color", metalsAndColors.color);
-        softAssert.assertTrue(results.stream().anyMatch(row -> row.getText().matches(regexColor)), String.format("Wrong Color"));
+        softAssert.assertTrue(results.stream().anyMatch(row -> row.getText().matches(regexColor)), "Wrong Color");
 
-        Integer sum = metalsAndColors.summary[0] + metalsAndColors.summary[1];
-        String regexSum = String.format("%s: %s", "Summary", sum);
-        softAssert.assertTrue(results.stream().anyMatch(row -> row.getText().matches(regexSum)), String.format("Wrong Summary"));
+        if (metalsAndColors.summary.length != 0) {
+            Integer sum = metalsAndColors.summary[0] + metalsAndColors.summary[1];
+            String regexSum = String.format("%s: %s", "Summary", sum);
+            softAssert.assertTrue(results.stream().anyMatch(row -> row.getText().matches(regexSum)), "Wrong Summary");
+        }
 
         String regexMetal = String.format("%s: %s", "Metal", metalsAndColors.metals);
-        softAssert.assertTrue(results.stream().anyMatch(row -> row.getText().matches(regexMetal)), String.format("Wrong Metal"));
+        softAssert.assertTrue(results.stream().anyMatch(row -> row.getText().matches(regexMetal)), "Wrong Metal");
 
         String elements = String.join(", ", metalsAndColors.elements);
         String regexElement = String.format("%s: %s", "Elements", elements);
-        softAssert.assertTrue(results.stream().anyMatch(row -> row.getText().matches(regexElement)), String.format("Wrong Elements"));
+        softAssert.assertTrue(results.stream().anyMatch(row -> row.getText().matches(regexElement)), "Wrong Elements");
 
         String salads = String.join(", ", metalsAndColors.vegetables);
         String regexSalad = String.format("%s: %s", "Vegetables", salads);
-        softAssert.assertTrue(results.stream().anyMatch(row -> row.getText().matches(regexSalad)), String.format("Wrong Vegetables"));
+        softAssert.assertTrue(results.stream().anyMatch(row -> row.getText().matches(regexSalad.trim())), "Wrong Vegetables");
         softAssert.assertAll();
     }
 }

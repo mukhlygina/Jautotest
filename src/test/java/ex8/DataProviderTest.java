@@ -56,6 +56,6 @@ public class DataProviderTest extends TestNGBase {
     public void MetalsColorsTest(MetalsAndColors metalsAndColors) {
         JDISite.headerMenu.selectMenu(MenuEnum.METALS_COLORS);
         JDISite.metalsColorsPage.elementsForm.fillAndSubmitForm(metalsAndColors);
+        JDISite.metalsColorsPage.resultsSection.checkResults(metalsAndColors);
     }
-
 }
